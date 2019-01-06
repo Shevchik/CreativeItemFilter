@@ -14,7 +14,6 @@ public class BannerMetaCopier implements MetaCopier<BannerMeta> {
 	@Override
 	public BannerMeta copyValidMeta(BannerMeta oldMeta, Material material) {
 		BannerMeta newMeta = (BannerMeta) Bukkit.getItemFactory().getItemMeta(material);
-		newMeta.setBaseColor(oldMeta.getBaseColor());
 		oldMeta.getPatterns().forEach(newMeta::addPattern);
 		return newMeta;
 	}

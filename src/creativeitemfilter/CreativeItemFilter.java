@@ -24,7 +24,7 @@ public class CreativeItemFilter extends JavaPlugin implements Listener {
 	public void onCreativeItemEvent(InventoryCreativeEvent event) {
 		ItemStack oldItem = event.getCursor();
 		// generate new item
-		ItemStack newItem = new ItemStack(oldItem.getType(), oldItem.getAmount(), oldItem.getDurability());
+		ItemStack newItem = new ItemStack(oldItem.getType(), oldItem.getAmount());
 		// handle meta
 		if (oldItem.hasItemMeta()) {
 			// get meta
