@@ -17,7 +17,7 @@ public class EnchantmentStorageMetaCopier implements MetaCopier<EnchantmentStora
 		EnchantmentStorageMeta newEnchBookMeta = (EnchantmentStorageMeta) Bukkit.getItemFactory().getItemMeta(material);
 		if (oldMeta.hasStoredEnchants()) {
 			oldMeta.getStoredEnchants().entrySet().stream()
-			.filter(entry -> entry.getValue() <= 15)
+			.filter(entry -> entry.getValue() > 0 && entry.getValue() <= 15)
 			.forEach(entry -> newEnchBookMeta.addStoredEnchant(entry.getKey(), entry.getValue(), true));
 		}
 		return newEnchBookMeta;
