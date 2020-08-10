@@ -3,6 +3,7 @@ package creativeitemfilter;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCreativeEvent;
@@ -60,6 +61,7 @@ public class CreativeItemFilter extends JavaPlugin implements Listener {
 			event.setCursor(newItem);
 		} catch (Throwable t) {
 			event.setCursor(null);
+			((Player) event.getWhoClicked()).updateInventory();
 			getLogger().log(Level.WARNING, "Unable to create safe clone of creative itemstack, removing", t);
 		}
 	}
