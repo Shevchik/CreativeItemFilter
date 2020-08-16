@@ -2,8 +2,28 @@
 bin/
 build/
 target/
-.externalToolBuilders/
+gen/
+libraries_runtime/
+libraries_shade/
+build_libraries/
+logs/
+
+# Gradle
+.gradle
+.gradletasknamecache
+
  # Eclipse Files #
 *.project
 *.classpath
 *.prefs
+*.factorypath
+.apt_generated/
+.externalToolBuilders/
+
+# Netbeans
+.nb-gradle/
+
+# IntelliJ
+.idea/
+*.iml
+
