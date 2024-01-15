@@ -1,5 +1,7 @@
 package org.hurricanegames.creativeitemfilter.handler.meta;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.bukkit.inventory.meta.BookMeta;
@@ -16,10 +18,10 @@ public class BookMetaCopier implements MetaCopier<BookMeta> {
 	@Override
 	public void copyValidMeta(CreativeItemFilterConfiguration configuration, BookMeta oldMeta, BookMeta newMeta) {
 		if (oldMeta.hasAuthor()) {
-			newMeta.setAuthor(StringUtils.clampString(oldMeta.getAuthor(), configuration.getBookAuthorMaxLength()));
+			newMeta.setAuthor(StringUtils.filterValidCharacters(StringUtils.clampString(oldMeta.getAuthor(), configuration.getBookAuthorMaxLength())));
 		}
 		if (oldMeta.hasTitle()) {
-			newMeta.setTitle(StringUtils.clampString(oldMeta.getTitle(), configuration.getBookTitleMaxLength()));
+			newMeta.setTitle(StringUtils.filterValidCharacters(StringUtils.clampString(oldMeta.getTitle(), configuration.getBookTitleMaxLength())));
 		}
 		if (oldMeta.hasGeneration()) {
 			newMeta.setGeneration(oldMeta.getGeneration());
@@ -27,12 +29,11 @@ public class BookMetaCopier implements MetaCopier<BookMeta> {
 		if (oldMeta.hasPages()) {
 			int bookPagesMaxLength = configuration.getBookPagesMaxLength();
 			newMeta.setPages(
-				oldMeta.getPages().stream()
-				.map(string -> StringUtils.clampString(string, bookPagesMaxLength))
-				.limit(configuration.getBookPagesMaxCount())
-				.collect(Collectors.toList())
+					oldMeta.getPages().stream()
+							.map(string -> StringUtils.filterValidCharacters(StringUtils.clampString(string, bookPagesMaxLength)))
+							.limit(configuration.getBookPagesMaxCount())
+							.collect(Collectors.toList())
 			);
 		}
 	}
-
 }

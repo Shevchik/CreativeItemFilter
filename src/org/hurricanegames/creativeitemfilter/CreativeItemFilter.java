@@ -19,5 +19,4 @@ public class CreativeItemFilter extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(new CreativeItemFilterHandler(getLogger(), configuration), this);
 		getCommand("creativeitemfilter").setExecutor(new BukkitCommandExecutor(new CreativeItemFilterCommands(new CreativeItemFilterCommandHelper(configuration)), "creativeitemfilter.admin"));
 	}
-
 }
