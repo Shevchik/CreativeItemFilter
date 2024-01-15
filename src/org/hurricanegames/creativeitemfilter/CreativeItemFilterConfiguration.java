@@ -21,8 +21,8 @@ public class CreativeItemFilterConfiguration extends SimpleConfiguration {
 	}
 
 	@ConfigurationFieldDefinition(fieldName = "enchantment.max_level", fieldType = IntegerConfigurationField.class)
-	private Integer enchantmentMaxLevel = Integer.valueOf(15);
-	@ConfigurationFieldDefinition(fieldName = "enchantment.max_level", fieldType = IntegerConfigurationField.class)
+	private Integer enchantmentMaxLevel = Integer.valueOf(5);
+	@ConfigurationFieldDefinition(fieldName = "enchantment.max_count", fieldType = IntegerConfigurationField.class)
 	private Integer enchantmentMaxCount = Integer.valueOf(6);
 	@ConfigurationFieldDefinition(fieldName = "enchantment.remove_unapplicable")
 	private Boolean enchantmentRemoveUnapplicable = Boolean.FALSE;
@@ -31,12 +31,12 @@ public class CreativeItemFilterConfiguration extends SimpleConfiguration {
 	private Integer displayNameMaxLength = Integer.valueOf(64);
 
 	@ConfigurationFieldDefinition(fieldName = "lore.max_length", fieldType = IntegerConfigurationField.class)
-	private Integer loreMaxLength = Integer.valueOf(64);
+	private Integer loreMaxLength = Integer.valueOf(32);
 	@ConfigurationFieldDefinition(fieldName = "lore.max_count", fieldType = IntegerConfigurationField.class)
 	private Integer loreMaxCount = Integer.valueOf(32);
 
 	@ConfigurationFieldDefinition(fieldName = "enchantment_book.max_level", fieldType = IntegerConfigurationField.class)
-	private Integer enchantmentBookMaxLevel = Integer.valueOf(15);
+	private Integer enchantmentBookMaxLevel = Integer.valueOf(5);
 	@ConfigurationFieldDefinition(fieldName = "enchantment_book.max_count", fieldType = IntegerConfigurationField.class)
 	private Integer enchantmentBookMaxCount = Integer.valueOf(6);
 
@@ -50,7 +50,7 @@ public class CreativeItemFilterConfiguration extends SimpleConfiguration {
 	private Integer bookPagesMaxCount = Integer.valueOf(20);
 
 	@ConfigurationFieldDefinition(fieldName = "potion.effects.max_amplifier", fieldType = IntegerConfigurationField.class)
-	private Integer potionEffectMaxAmplifier = Integer.valueOf(5);
+	private Integer potionEffectMaxAmplifier = Integer.valueOf(2);
 	@ConfigurationFieldDefinition(fieldName = "potion.effects.max_duration", fieldType = LongConfigurationField.class)
 	private Long potionEffectMaxDuration = Long.valueOf(TimeUnit.MINUTES.toSeconds(10) * 20);
 	@ConfigurationFieldDefinition(fieldName = "potion.effects.max_count", fieldType = IntegerConfigurationField.class)
@@ -60,9 +60,9 @@ public class CreativeItemFilterConfiguration extends SimpleConfiguration {
 	private Integer fireworkEffectColorsMaxCount = Integer.valueOf(16);
 
 	@ConfigurationFieldDefinition(fieldName = "firework.max_power", fieldType = IntegerConfigurationField.class)
-	private Integer fireworkMaxPower = Integer.valueOf(64);
+	private Integer fireworkMaxPower = Integer.valueOf(3);
 	@ConfigurationFieldDefinition(fieldName = "firework.max_effects", fieldType = IntegerConfigurationField.class)
-	private Integer fireworkMaxEffects = Integer.valueOf(8);
+	private Integer fireworkMaxEffects = Integer.valueOf(2);
 
 	@ConfigurationFieldDefinition(fieldName = "knowledge_book.max_recipes", fieldType = IntegerConfigurationField.class)
 	private Integer knowledgeBookMaxRecipes = Integer.valueOf(10);

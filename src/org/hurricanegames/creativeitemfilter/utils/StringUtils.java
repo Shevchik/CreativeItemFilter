@@ -6,4 +6,7 @@ public class StringUtils {
 		return string.length() < limit ? string : string.substring(0, limit);
 	}
 
+	public static String filterValidCharacters(String input) {
+		return input.replaceAll("[^a-zA-Zа-яА-Я0-9\\s.,;:!?'\"()\\[\\]{}@#&*-+/\\\\]", "");
+	}
 }

@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'com.github.johnrengelman.shadow' version '5.0.0'
+	id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 
@@ -9,17 +9,6 @@ defaultTasks 'build'
 
 group 'org.hurricanegames'
 version '2.0'
-
-
-import java.nio.file.Path
-import java.nio.file.Paths
-import java.nio.file.Files
-
-
-Path projectDirectoryPath = projectDir.toPath().toAbsolutePath()
-
-
-sourceCompatibility = JavaVersion.VERSION_1_8
 
 sourceSets {
 	main {
@@ -34,7 +23,6 @@ sourceSets {
 
 repositories {
 	mavenCentral()
-	jcenter()
 	maven {
 		url 'https://oss.sonatype.org/content/repositories/snapshots/'
 	}
@@ -42,7 +30,7 @@ repositories {
 		url 'https://hub.spigotmc.org/nexus/content/repositories/public/'
 	}
 	maven {
-		url 'https://papermc.io/repo/repository/maven-public/'
+		url = uri("https://repo.papermc.io/repository/maven-public/")
 	}
 	maven {
 		url 'https://jitpack.io'
@@ -50,8 +38,8 @@ repositories {
 }
 
 dependencies {
-	compileOnly group: 'com.destroystokyo.paper', name: 'paper-api', version: '1.16.2-R0.1-SNAPSHOT'
-	compile group: 'com.github.HurricaneGamesOrg', name: 'HurricaneGamesCommandLib', version: '56a7ccd258'
+	compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
+	implementation group: 'com.github.HurricaneGamesOrg', name: 'HurricaneGamesCommandLib', version: '56a7ccd258'
 }
 
 compileJava {
@@ -59,6 +47,9 @@ compileJava {
 	options.incremental = false
 }
 
+java {
+	toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+}
 
 String relocatePrefix = group + "." + rootProject.name.toLowerCase() + ".zlibs."
 
@@ -66,24 +57,10 @@ shadowJar {
 	from sourceSets.main.java.srcDirs
 	from 'LICENSE'
 
-	archiveName = jar.archiveName
-
 	relocate 'org.hurricanegames.commandlib', relocatePrefix + 'commandlib'
 }
-
-
-task copyFinalJarToTarget(type: DefaultTask) {doLast{
-	Path targetJarDirectory = projectDirectoryPath.resolve("target")
-	Files.createDirectories(targetJarDirectory)
-	java.nio.file.Files.copy(
-		shadowJar.archivePath.toPath().toAbsolutePath(),
-		targetJarDirectory.resolve(shadowJar.baseName + '.jar'),
-		java.nio.file.StandardCopyOption.REPLACE_EXISTING
-	)
-}}
 
 
 compileJava.dependsOn(clean)
 jar.enabled = false
 jar.finalizedBy(shadowJar)
-shadowJar.finalizedBy(copyFinalJarToTarget)

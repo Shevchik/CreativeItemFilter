@@ -20,6 +20,14 @@ public class MetaCopierFactory {
 	public MetaCopierFactory() {
 		copiers.setKnownPath(LeatherArmorMeta.class, LeatherArmorMetaCopier.INSTANCE);
 		copiers.setKnownPath(CompassMeta.class, CompassMetaCopier.INSTANCE);
+		copiers.setKnownPath(AxolotlBucketMetaCopier.class, AxolotlBucketMetaCopier.INSTANCE);
+		copiers.setKnownPath(BlockStateMetaCopier.class, BlockStateMetaCopier.INSTANCE);
+		copiers.setKnownPath(CrossbowMetaCopier.class, CrossbowMetaCopier.INSTANCE);
+		copiers.setKnownPath(MapMetaCopier.class, MapMetaCopier.INSTANCE);
+		copiers.setKnownPath(ArmorMetaCopier.class, ArmorMetaCopier.INSTANCE);
+		copiers.setKnownPath(MusicInstrumentMetaCopier.class, MusicInstrumentMetaCopier.INSTANCE);
+		copiers.setKnownPath(SkullMetaCopier.class, SkullMetaCopier.INSTANCE);
+		copiers.setKnownPath(SuspiciousStewMetaCopier.class, SuspiciousStewMetaCopier.INSTANCE);
 		copiers.setKnownPath(TropicalFishBucketMeta.class, TropicalFishBucketMetaCopier.INSTANCE);
 		copiers.setKnownPath(BannerMeta.class, BannerMetaCopier.INSTANCE);
 		copiers.setKnownPath(EnchantmentStorageMeta.class, EnchantmentStorageMetaCopier.INSTANCE);
